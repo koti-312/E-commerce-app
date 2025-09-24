@@ -1,0 +1,97 @@
+.logins {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: burlywood;
+  font-family: Arial, sans-serif;
+}
+
+.logins-container {
+  width: 420px;
+  padding: 170px;
+  background: white;
+  border: 1px solid black;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.logins-container h1 {
+  margin-bottom: 20px;
+  font-size: 26px;
+  font-weight: bold;
+  color: #333;
+}
+
+.logins-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-bottom: 20px;
+}
+
+.logins-fields input {
+  width: 100%;
+  padding: 25px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 200;
+  outline: none;
+}
+
+.logins-fields input:focus {
+  border-color: #ff4d4d;
+}
+
+.logins-container button {
+  width: 110%;
+  padding: 15px;
+  background: red;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.login-text {
+  margin-top: 15px;
+  font-size: 19px;
+  color: black;
+  font-weight: 300;
+  text-align: left;
+}
+
+.login-text span {
+  color: rebeccapurple;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.login-text span:hover {
+  text-decoration: underline;
+}
+
+.logins-agree {
+  
+  margin-top: 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13px;
+  color: white;
+}
+
+.logins-agree input {
+  margin-top: 18px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.box {
+  text-align: left;
+  font-size: 16px;
+  color: #555;
+}
