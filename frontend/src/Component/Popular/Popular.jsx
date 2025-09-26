@@ -21,7 +21,7 @@ import { data } from 'react-router-dom';
 
         <div className="popular-item">
             {popularProducts.map((item,i)=>{
-            return <Item key={i} id={item.id}name={item.name} category={item.category} image={item.image} quality={item.quality} price={item.price}/>
+            return <Item key={i} id={item.id}name={item.name} category={item.category} image={`https://e-commerce-app-backend-31uv.onrender.com/${item.image}`} quality={item.quality} price={item.price}/>
             })}
         </div>
 
