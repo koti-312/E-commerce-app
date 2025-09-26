@@ -4,10 +4,11 @@ import remove from '../../assets/remove.png';
 
 const ListProduct = () => {
 
+  const url="https://e-commerce-app-backend-31uv.onrender.com"
   const[allproducts,setAllProducts]=useState([]);
 
   const fetchInfo= async()=>{
-    await fetch('http://localhost:4000/allproducts')
+    await fetch('https://e-commerce-app-backend-31uv.onrender.com/allproducts')
     .then((res)=>res.json())
     .then((data)=>{setAllProducts(data)});
   }
@@ -18,7 +19,7 @@ const ListProduct = () => {
   },[])
 
   const remove_product = async(id)=>{
-    await fetch('http://localhost:4000/removeproduct',{
+    await fetch('https://e-commerce-app-backend-31uv.onrender.com/removeproduct',{
       method:'POST',
       headers:{
         Accept:'application/json',
