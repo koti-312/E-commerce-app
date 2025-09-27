@@ -40,7 +40,7 @@ const AddProduct = () => {
 
         if(responseData.success)
             {
-            product.image=responseData.image_url;
+            product.image=responseData.filename;
             console.log(product);
             await fetch('https://e-commerce-app-backend-31uv.onrender.com/addproduct',{
                 method:'POST',
