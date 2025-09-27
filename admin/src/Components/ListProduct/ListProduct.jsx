@@ -49,7 +49,7 @@ const ListProduct = () => {
 
           return <>
           <div key={index} className="listproduct-format  listproduct">
-            <img src={`https://e-commerce-app-backend-31uv.onrender.com${product.image}`} alt="" className="listproduct-icon" />
+            <img src={product.image} alt="" className="listproduct-icon" />
             <p>{product.name}</p>
             <p>${product.price}</p>
             <p>{product.category}</p>
