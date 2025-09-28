@@ -1,14 +1,19 @@
-.nav-logo img{
-
-    display: flex;
-    align-items: center;
-    padding: 15px 60px;
-    width: 90px;
-    height: 90px;
+.nav-logo{
+    margin: 20px;
 }
 
-.h2{
+.logo{
+    width: 80px;
+    height: 80px;
+    margin-bottom: -20px;
+}
+.p{
+    text-align: left;
+    display: inline-block;
+    font-size: 30px;
+    font-weight: 300;
+}
+
+.h1{ 
     text-align: center;
-    padding-right: 70% ;
-    margin-top: -10px;
 }
