@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useState } from "react";
 import all_product from '../../assets/all_product';
 
 export const ShopContext = createContext(null);
@@ -21,6 +21,7 @@ const ShopContextProvider = (props) => {
 
   const addtoCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+    
     if (localStorage.getItem('auth-token')) {
       fetch('http://localhost:4000/addtocart', {
         method: 'POST',

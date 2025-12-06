@@ -12,13 +12,13 @@ const Sidebar = () => {
             <Link to={'/addproduct'} style={{ textDecoration: "none" }}>
                 <div className="sidebar-item">
                 <img src={add_product} alt="" className='product'/>
-                    <p>Add Product</p>
+                    <p className='name'>Add Product</p>
                 </div>
             </Link>
             <Link to={'/listproduct'} style={{ textDecoration: "none" }}>
                 <div className="sidebar-item">
                 <img src={list_product} alt="" className='product'/>
-                    <p>Product List</p>
+                    <p className='name'>Product List</p>
                 </div>
             </Link>
         </div>

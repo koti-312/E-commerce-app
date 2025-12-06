@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import './Popular.css';
 import Item from '../Item/Item';
-import data_product  from '../../assets/data';
-import { data } from 'react-router-dom';
 
  const Popular = () => {
 
   const [popularProducts,setPopularProducts] =useState([]);
+
+
 
   useEffect(()=>{
     fetch('http://localhost:4000/popular')

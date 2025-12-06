@@ -20,6 +20,7 @@
 }
 
 .popular-item {
+  margin-top: 50px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 105px;

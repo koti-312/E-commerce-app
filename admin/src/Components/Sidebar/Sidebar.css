@@ -9,6 +9,10 @@
     background: wheat;
  } 
 
+ .name{
+    font-size: 20px;
+ }
+
 .product{
     height: 50px;
     width: 50px;

@@ -65,8 +65,7 @@
     cursor: pointer;
 }
 
-.cartitems-promo{
-    flex: 1;
+.cartitem-promo{
     font-size: 18px;
     font-weight: 500;
 }
@@ -88,16 +87,18 @@
     width: 290px;
     height: 60px;
     background: white;
-
-
 }
 
 .cartitems-promobox  button{
 
     width: 140px;
-    height: 58px;
+    height: 65px;
     background: black;
     color: white;
     font-size: 16px;
     cursor: pointer;
+}
+
+.promoholder{
+    text-align: center;
 }

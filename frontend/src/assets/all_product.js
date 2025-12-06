@@ -34,6 +34,12 @@ import p33_img from './suitcase.png';
 import p34_img from './mouse.png';
 import p35_img from './image.png';
 import p36_img from './cap.png';
+import pro1_img from './mens1.webp';
+import pro2_img from './mens2.webp';
+import pro3_img from './mens3.webp';
+import pro4_img from './mens4.webp';
+
+
 
 
 let all_product = [
@@ -409,6 +415,47 @@ let all_product = [
         price: 420.0,
 
     },
+    {
+    
+        id: 37,
+        name: "Floral printed shirt",
+        category: "shop",
+        image: pro1_img,
+        price: 1200.0,
+        quality: "Premium",
+    },
+
+
+    {
+        id: 38,
+        name: "Multi-color striped shirt",
+        category: "shop",
+        image: pro2_img,
+        price: 900.0,
+        quality: "Premium",
+    },
+
+
+    {
+        id: 39,
+        name: "Leaf printed shirt",
+        category: "shop",
+        image: pro3_img,
+        price: 1500.0,
+        quality: "Premium",
+
+    },
+
+
+    {
+        id: 40,
+        name: "White printed casual shirt",
+        category: "shop",
+        image: pro4_img,
+        price: 899.0,
+        quality: "Premium",
+    },
+
 
 ];
 

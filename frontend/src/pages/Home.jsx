@@ -1,7 +1,8 @@
 import React from 'react'
 import Popular from '../Component/Popular/Popular';
 
-const Shop = () => {
+
+const Home = () => {
   return (
     <div>
 
@@ -11,5 +12,5 @@ const Shop = () => {
   )
 }
 
-export default Shop;
+export default Home;
 
