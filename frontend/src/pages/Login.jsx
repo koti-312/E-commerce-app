@@ -3,6 +3,7 @@ import './Login.css';
 
 const Login = () => {
 
+  const url="https://e-commerce-app-backend-31uv.onrender.com"
   const [state, setstate] = useState("Login");
   const [formData, setFormData] = useState({
     username: "",
@@ -16,7 +17,7 @@ const Login = () => {
   const login = async () => {
     console.log("Login Function Executed", formData);
     let responseData;
-    await fetch('http://localhost:4000/login', {
+    await fetch('https://e-commerce-app-backend-31uv.onrender.com/login', {
       method: 'POST',
       headers: {
         Accept: 'application/form-data',
@@ -37,7 +38,7 @@ const Login = () => {
   const signup = async () => {
     console.log("Signup Function Executed", formData);
     let responseData;
-    await fetch('http://localhost:4000/signup', {
+    await fetch('https://e-commerce-app-backend-31uv.onrender.com/signup', {
       method: 'POST',
       headers: {
         Accept: 'application/form-data',

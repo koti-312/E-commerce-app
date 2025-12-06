@@ -16,6 +16,7 @@ const getDefaultCart = () => {
 
 const ShopContextProvider = (props) => {
 
+  const url="https://e-commerce-app-backend-31uv.onrender.com"
   const [cartItems, setCartItems] = useState(getDefaultCart());
 
 
@@ -23,7 +24,7 @@ const ShopContextProvider = (props) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
     
     if (localStorage.getItem('auth-token')) {
-      fetch('http://localhost:4000/addtocart', {
+      fetch('https://e-commerce-app-backend-31uv.onrender.com/addtocart', {
         method: 'POST',
         headers: {
           Accept: 'application/form-data',
@@ -42,7 +43,7 @@ const ShopContextProvider = (props) => {
   const removeFromCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
     if (localStorage.getItem('auth-token')) {
-      fetch('http://localhost:4000/removefromcart', {
+      fetch('https://e-commerce-app-backend-31uv.onrender.com/removefromcart', {
         method: 'POST',
         headers: {
           Accept: 'application/form-data',

@@ -1,4 +1,4 @@
-const port = 4000;
+const port = process.env.PORT || 4000;
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -40,8 +40,8 @@ const upload = multer({ storage: storage })
 app.use('/images', express.static('upload/images'))
 app.post("/upload", upload.single('product'), (req,res) => {
   res.json({
-    success: 1,
-    image_url: `http://localhost:${port}/images/${req.file.filename}`
+    success: true,
+    image_url: `/images/${req.file.filename}`
   })
 })
 

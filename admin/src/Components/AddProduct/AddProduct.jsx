@@ -4,6 +4,7 @@ import upload_image from '../../assets/upload.png'
 
 const AddProduct = () => {
 
+    const url="https://e-commerce-app-backend-31uv.onrender.com"
     const[image,setImage]=useState(null);
     const[productDetails,setProductDetails]=useState({
         name:"",
@@ -27,7 +28,7 @@ const AddProduct = () => {
         let formData= new FormData();
         formData.append('product',image);
         
-        await fetch("http://localhost:4000/upload",{
+        await fetch("https://e-commerce-app-backend-31uv.onrender.com/upload",{
             method:'POST',
             headers:{
                 Accept:'application/json',
@@ -41,7 +42,7 @@ const AddProduct = () => {
             {
             product.image=responseData.image_url;
             console.log(product);
-            await fetch('http://localhost:4000/addproduct',{
+            await fetch('https://e-commerce-app-backend-31uv.onrender.com/addproduct',{
                 method:'POST',
                 headers:{
                     Accept:'application/json',

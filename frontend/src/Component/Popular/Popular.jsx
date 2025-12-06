@@ -4,12 +4,13 @@ import Item from '../Item/Item';
 
  const Popular = () => {
 
+  const url="https://e-commerce-app-backend-31uv.onrender.com"
   const [popularProducts,setPopularProducts] =useState([]);
 
 
 
   useEffect(()=>{
-    fetch('http://localhost:4000/popular')
+    fetch('https://e-commerce-app-backend-31uv.onrender.com/popular')
     .then((response)=>response.json())
     .then((data)=>setPopularProducts(data));
   },[])
@@ -20,7 +21,7 @@ import Item from '../Item/Item';
 
         <div className="popular-item">
             {popularProducts.map((item,i)=>{
-            return <Item key={i} id={item.id}name={item.name} category={item.category} image={item.image} quality={item.quality} price={item.price}/>
+            return <Item key={i} id={item.id}name={item.name} category={item.category} image={`https://e-commerce-app-backend-31uv.onrender.com${item.image}`} quality={item.quality} price={item.price}/>
             })}
         </div>
 
