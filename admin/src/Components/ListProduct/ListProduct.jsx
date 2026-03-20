@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './ListProduct.css';
-import remove from '../../assets/remove.png';
+import {FaTrash}  from 'react-icons/fa'
 
 const ListProduct = () => {
 
@@ -54,8 +54,7 @@ const ListProduct = () => {
             <p>${product.price}</p>
             <p>{product.category}</p>
             <p>{product.quality}</p>
-            <img onClick={()=>{remove_product(product.id)}} src={remove} alt="" className="listproduct-remove" />
-          
+           <FaTrash onClick={()=>{remove_product(product.id)}} alt="Delete" className="listproduct-remove"/>
           </div>
           <hr />
           </>

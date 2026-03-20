@@ -41,7 +41,7 @@
   font-size: 21px;
   font-weight: 500;
   cursor: pointer;
-  
+
 }
 
 .nav-menu ,a {
@@ -50,7 +50,7 @@
 }
 
 .nav-menu ,a:hover{
-  color:rgb(89, 0, 255);
+  color:rgb(0, 68, 235);
 }
 
 

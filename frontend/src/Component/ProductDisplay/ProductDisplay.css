@@ -46,10 +46,15 @@
   height: 50px;
   width: 170px;
   font-size: 18px;
-  background: red;
-  color: white;
+  background-color: bisque;
+  color: black;
   border: none;
   cursor: pointer;
+
+}
+.cart:hover{
+  background-color: red;
+  color: white;
 
 }
 

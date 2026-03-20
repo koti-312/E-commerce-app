@@ -2,6 +2,8 @@ import React, { useContext } from 'react'
 import './CartItems.css';
 import { ShopContext } from '../Context/ShopContext';
 import remove_icon from '../../assets/bin.png';
+import {FaTrash} from 'react-icons/fa'
+
 
 const CartItems = () => {
   const {getTotalCartAmount, all_product,cartItems, removeFromCart } = useContext(ShopContext);
@@ -30,7 +32,7 @@ const CartItems = () => {
                 <p>${e.price}</p>
                 <button className='cartitems-quantity'>{cartItems[e.id]}</button>
                 <p>${e.price*cartItems[e.id]}</p>
-                <img src={remove_icon} onClick={()=>{removeFromCart(e.id)}} alt="" className="delete-cart" />
+                <FaTrash onClick={()=>{removeFromCart(e.id)}} alt="" className="delete-cart" />
               </div>
               <hr />
             </div>

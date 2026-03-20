@@ -24,7 +24,7 @@
 .listproduct{
     align-items: center;
     font-weight: 200;
-    font-size: 20px;
+    font-size: 22px;
 }
 
 .listproduct-icon{
@@ -37,6 +37,7 @@
     cursor: pointer;
     height: 30px;
     width: 30px;
+    color: grey;
 }
 
 .listproduct-remove:hover{
