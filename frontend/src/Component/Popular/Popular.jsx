@@ -6,8 +6,6 @@ import Item from '../Item/Item';
 
   const [popularProducts,setPopularProducts] =useState([]);
 
-
-
   useEffect(()=>{
     fetch('https://e-commerce-app-backend-31uv.onrender.com/popular')
     .then((response)=>response.json())
