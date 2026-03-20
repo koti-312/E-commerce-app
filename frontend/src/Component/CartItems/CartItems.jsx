@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import './CartItems.css';
 import { ShopContext } from '../Context/ShopContext';
-import remove_icon from '../../assets/bin.png';
 import {FaTrash} from 'react-icons/fa'
 
 
@@ -36,8 +35,7 @@ const CartItems = () => {
               </div>
               <hr />
             </div>
-          
-
+        
         }
         return  null;
        })}
