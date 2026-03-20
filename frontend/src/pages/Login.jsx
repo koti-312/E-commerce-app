@@ -3,7 +3,6 @@ import './Login.css';
 
 const Login = () => {
 
-  const url="https://e-commerce-app-backend-31uv.onrender.com"
   const [state, setstate] = useState("Login");
   const [formData, setFormData] = useState({
     username: "",

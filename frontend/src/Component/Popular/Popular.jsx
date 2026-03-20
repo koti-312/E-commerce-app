@@ -4,7 +4,6 @@ import Item from '../Item/Item';
 
  const Popular = () => {
 
-  const url="https://e-commerce-app-backend-31uv.onrender.com"
   const [popularProducts,setPopularProducts] =useState([]);
 
 
