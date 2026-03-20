@@ -16,13 +16,14 @@ const getDefaultCart = () => {
 
 const ShopContextProvider = (props) => {
 
-  const url="https://e-commerce-app-backend-31uv.onrender.com"
+  const url = "https://e-commerce-app-backend-31uv.onrender.com"
+
   const [cartItems, setCartItems] = useState(getDefaultCart());
 
 
   const addtoCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
-    
+
     if (localStorage.getItem('auth-token')) {
       fetch('https://e-commerce-app-backend-31uv.onrender.com/addtocart', {
         method: 'POST',

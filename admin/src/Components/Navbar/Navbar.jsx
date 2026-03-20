@@ -9,11 +9,7 @@ const Navbar = () => {
                 <img src={shop_logo} alt="" className='logo'/>
                 <p className='p'>MYSHOP</p>
                 <h1 className='h1'>Admin panel</h1>
-<<<<<<< HEAD
 
-=======
-                <hr />
->>>>>>> 2f7db4843a4184dcf982dcf624354699e811edfb
             </div>
         
         </div>

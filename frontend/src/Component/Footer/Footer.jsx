@@ -1,22 +1,21 @@
 import React from 'react'
 import './Footer.css';
-import shop_logo from '../../assets/shop logo.png';
-import  insta_icon from "../../assets/insta.png"
-import whatsapp_icon from "../../assets/whatsapp.png"
-import mail_icon from "../../assets/mail.jpg"
+import shop_logo from '../../assets/carts.png';
+import  insta_icon from "../../assets/instagram.png"
+import whatsapp_icon from "../../assets/social.png"
+import mail_icon from "../../assets/gmail.png"
 
 const Footer = () => {
     return (
         <div className='footer'>
             
             <div className="footer-logo">
-                <img src={shop_logo} alt="" />
-                <p>MYSHOP</p>
+                <img src={shop_logo} alt="Myshop"/>
+                <p className='logo-name'>MYSHOP</p>
             </div>
             <div className="footer-link">
                 <li>Company</li>
                 <li>Products</li>
-                <li>Offices</li>
                 <li>About</li>
                 <li>Contact</li>
             </div>

@@ -1,8 +1,4 @@
-.remove{
-    height: 30px;
-    width: 30px;
-    cursor: pointer;
-}
+
 .cartitems{
     margin: 100px 170px;
 }
@@ -101,4 +97,14 @@
 
 .promoholder{
     text-align: center;
+}
+
+.delete-cart{
+    height: 45px;
+    width: 45px;
+    cursor: pointer;
+}
+
+.delete-cart:hover{
+    background-color: red;
 }

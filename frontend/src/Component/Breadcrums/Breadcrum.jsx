@@ -3,7 +3,7 @@ import './Breadcrum.css';
 
 const Breadcrum = ({ product }) => {
 
-  if (!product) {
+  if (product) {
     return <div className="breadcrum"><b>HOME | SHOP</b></div>;
   }
 

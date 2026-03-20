@@ -1,4 +1,4 @@
-const port = process.env.PORT || 4000;
+const port = 4000;
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -6,10 +6,6 @@ const jwt = require("jsonwebtoken");
 const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
-const { type } = require("os");
-const { sign } = require("crypto");
-const { emitWarning, connected } = require("process");
-const { error } = require("console");
 
 app.use(express.json());
 app.use(cors());
@@ -40,8 +36,8 @@ const upload = multer({ storage: storage })
 app.use('/images', express.static('upload/images'))
 app.post("/upload", upload.single('product'), (req,res) => {
   res.json({
-    success: true,
-    image_url: `/images/${req.file.filename}`
+    success: 1,
+    image_url: `http://localhost:${port}/images/${req.file.filename}`
   })
 })
 
