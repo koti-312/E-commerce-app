@@ -1,6 +1,6 @@
-import homepro_1 from "./men2.webp"
+import homepro_1 from "./mens2.webp"
 import homepro_2 from "./product_1.png"
-import homepro_3 from "./men3.webp"
+import homepro_3 from "./mens3.webp"
 import homepro_4 from "./product_4.png"
 
 const home_product = [
