@@ -49,7 +49,7 @@ const ListProduct = () => {
 
           return <>
           <div key={index} className="listproduct-format  listproduct">
-            <img src={url+product.image} alt="" className="listproduct-icon" />
+            <img src={product.image.startsWith('http') ? product.image : url + product.image} alt="" className="listproduct-icon" />
             <p>{product.name}</p>
             <p>${product.price}</p>
             <p>{product.category}</p>
