@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import './Popular.css';
-import Item from '../Item/Item.jsx';
-import home_product from "../../assets/product_home.js"
-
+import Item from '../Item/Item';
+import home_product from '../../assets/product_home'
 
 const Popular = () => {
-
   const [popularProducts, setPopularProducts] = useState([]);
 
   useEffect(() => {
@@ -14,31 +12,32 @@ const Popular = () => {
       .then((data) => setPopularProducts(data));
   }, [])
 
-  const allhomeProduct = [...home_product, popularProducts]
+  const allProducts = [...home_product, ...popularProducts]
+
+  const getImage = (item) => {
+    if (!item.image) return home_product[0].image
+    if (item.image.startsWith('http')) return item.image
+    return `https://e-commerce-app-backend-31uv.onrender.com${item.image}`
+  }
 
   return (
     <div className='popular'>
       <h1>Popular in Mens & Womens</h1>
-
       <div className="popular-item">
-        {allhomeProduct.map((item, i) => {
-          return <Item
+        {allProducts.map((item, i) => (
+          <Item
             key={i}
             id={item.id}
             name={item.name}
-            category={item.category}
-            image={item.image.startsWith('http')
-              ? item.image
-              : `https://e-commerce-app-backend-31uv.onrender.com${item.image}`}
-            quality={item.quality}
+            image={getImage(item)}
             price={item.price}
           />
-          // <Item key={i} id={item.id}name={item.name} category={item.category} image={`https://e-commerce-app-backend-31uv.onrender.com${item.image}`} quality={item.quality} price={item.price}/>
-        })}
+        ))}
       </div>
-
     </div>
   )
 }
 
 export default Popular;
+        
+// <Item key={i} id={item.id}name={item.name} category={item.category} image={`https://e-commerce-app-backend-31uv.onrender.com${item.image}`} quality={item.quality} price={item.price}/>
