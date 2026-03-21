@@ -1,7 +1,7 @@
-import homepro_1 from "../assets/men2.webp"
-import homepro_2 from "../assets/product_1.png"
-import homepro_3 from "../assets/men3.webp"
-import homepro_4 from "../assets/product_4.png"
+import homepro_1 from "./men2.webp"
+import homepro_2 from "./product_1.png"
+import homepro_3 from "./men3.webp"
+import homepro_4 from "./product_4.png"
 
 const home_product = [
     {
