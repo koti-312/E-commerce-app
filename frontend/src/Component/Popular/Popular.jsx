@@ -16,7 +16,8 @@ const Popular = () => {
 
   const getImage = (item) => {
     if (!item.image) return home_product[0].image
-    if (item.image.startsWith('http')) return item.image
+    if (item.image.includes('cloudinary')) return item.image 
+    if (item.image.includes('static/media')) return item.image 
     return `https://e-commerce-app-backend-31uv.onrender.com${item.image}`
   }
 
