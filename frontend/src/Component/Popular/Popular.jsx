@@ -1,26 +1,41 @@
 import React, { useEffect, useState } from 'react'
 import './Popular.css';
-import Item from '../Item/Item';
+import Item from '../Item/Item.jsx';
+import home_product from "../../assets/product_home.js"
 
- const Popular = () => {
 
-  const [popularProducts,setPopularProducts] =useState([]);
+const Popular = () => {
 
-  useEffect(()=>{
+  const [popularProducts, setPopularProducts] = useState([]);
+
+  useEffect(() => {
     fetch('https://e-commerce-app-backend-31uv.onrender.com/popular')
-    .then((response)=>response.json())
-    .then((data)=>setPopularProducts(data));
-  },[])
+      .then((response) => response.json())
+      .then((data) => setPopularProducts(data));
+  }, [])
+
+  const allhomeProduct = [...home_product, popularProducts]
 
   return (
     <div className='popular'>
-        <h1>Popular in Mens & Womens</h1>
+      <h1>Popular in Mens & Womens</h1>
 
-        <div className="popular-item">
-            {popularProducts.map((item,i)=>{
-            return <Item key={i} id={item.id}name={item.name} category={item.category} image={`https://e-commerce-app-backend-31uv.onrender.com${item.image}`} quality={item.quality} price={item.price}/>
-            })}
-        </div>
+      <div className="popular-item">
+        {allhomeProduct.map((item, i) => {
+          return <Item
+            key={i}
+            id={item.id}
+            name={item.name}
+            category={item.category}
+            image={item.image.startsWith('http')
+              ? item.image
+              : `https://e-commerce-app-backend-31uv.onrender.com${item.image}`}
+            quality={item.quality}
+            price={item.price}
+          />
+          // <Item key={i} id={item.id}name={item.name} category={item.category} image={`https://e-commerce-app-backend-31uv.onrender.com${item.image}`} quality={item.quality} price={item.price}/>
+        })}
+      </div>
 
     </div>
   )
