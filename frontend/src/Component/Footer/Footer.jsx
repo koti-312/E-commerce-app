@@ -1,6 +1,6 @@
 import React from 'react'
-import './Footer.css';
-import shop_logo from '../../assets/carts.png';
+import './Footer.css'
+import shop_logo from '../../assets/carts.png'
 import  insta_icon from "../../assets/instagram.png"
 import whatsapp_icon from "../../assets/social.png"
 import mail_icon from "../../assets/gmail.png"
@@ -30,8 +30,8 @@ const Footer = () => {
                 <img src={mail_icon} alt="" />
 
             </div>
+            
             <div className="footer-copyright">
-                <hr />
                 <p>Copyright@2025</p>
             </div>
         </div>
@@ -39,4 +39,4 @@ const Footer = () => {
     )
 }
 
-export default Footer;
+export default Footer
