@@ -1,24 +1,22 @@
 import React, { useEffect, useState } from 'react'
-import './Popular.css';
-import Item from '../Item/Item';
+import './Popular.css'
+import Item from '../Item/Item'
 import home_product from '../../assets/product_home'
+import { getPopularProducts, getImageUrl } from '../../services/api'
 
 const Popular = () => {
-  const [popularProducts, setPopularProducts] = useState([]);
+  const [popularProducts, setPopularProducts] = useState([])
 
   useEffect(() => {
-    fetch('https://e-commerce-app-backend-31uv.onrender.com/popular')
-      .then((response) => response.json())
-      .then((data) => setPopularProducts(data));
+    getPopularProducts()
+      .then((data) => setPopularProducts(data))
   }, [])
 
   const allProducts = [...home_product, ...popularProducts]
 
   const getImage = (item) => {
     if (!item.image) return home_product[0].image
-    if (item.image.includes('cloudinary')) return item.image 
-    if (item.image.includes('static/media')) return item.image 
-    return `https://e-commerce-app-backend-31uv.onrender.com${item.image}`
+    return getImageUrl(item.image)
   }
 
   return (
@@ -39,4 +37,4 @@ const Popular = () => {
   )
 }
 
-export default Popular;
+export default Popular
