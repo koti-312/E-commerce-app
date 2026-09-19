@@ -1,11 +1,11 @@
 import React, { useContext } from 'react'
-import './ShopCategory.css';
-import { ShopContext } from '../Component/Context/ShopContext';
-import Item from '../Component/Item/Item';
+import './ShopCategory.css'
+import { ShopContext } from '../Component/Context/ShopContext'
+import Item from '../Component/Item/Item'
 
 const ShopCategory = (props) => {
 
-  const {all_product} =useContext(ShopContext);
+  const {all_product} =useContext(ShopContext)
   return (
     <div className='Shopcategory'>
       <img src={props.banner} alt="" className='shopcategory-banner'/>
@@ -22,7 +22,7 @@ const ShopCategory = (props) => {
             return<Item key={i} id={item.id}name={item.name} category={item.category} quality={item.quality}image={item.image} price={item.price}/>
           }
           else{
-            return null; 
+            return null
           }
         })}
       </div>
@@ -31,4 +31,4 @@ const ShopCategory = (props) => {
   )
 }
 
-export default ShopCategory;
+export default ShopCategory
