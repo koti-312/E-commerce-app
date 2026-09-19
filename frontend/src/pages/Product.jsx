@@ -1,14 +1,14 @@
 import React, { useContext } from 'react'
 import { ShopContext } from '../Component/Context/ShopContext'
-import { useParams } from 'react-router-dom';
-import Breadcrum from '../Component/Breadcrums/Breadcrum';
-import ProductDisplay from '../Component/ProductDisplay/ProductDisplay';
+import { useParams } from 'react-router-dom'
+import Breadcrum from '../Component/Breadcrums/Breadcrum'
+import ProductDisplay from '../Component/ProductDisplay/ProductDisplay'
 
 const Product = () => {
 
-  const {all_product}= useContext(ShopContext);
-  const {productId} =useParams();
-  const product =all_product.find((e)=> e.id === Number(productId));
+  const {all_product}= useContext(ShopContext)
+  const {productId} =useParams()
+  const product =all_product.find((e)=> e.id === Number(productId))
 
 
   return (
@@ -21,4 +21,4 @@ const Product = () => {
   )
 }
 
-export default Product;
+export default Product
