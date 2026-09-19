@@ -4,11 +4,9 @@
   margin: 20px 0;
   overflow: hidden;
   position: relative;
-  
 }
 
 .shopcategory-indexsort{
-
     display: flex;
     margin: 0px 170px;
     justify-content: space-between;
@@ -16,7 +14,6 @@
 }
 
 .shopcategory-sort{
-
     padding: 10px 20px;
 }
 
