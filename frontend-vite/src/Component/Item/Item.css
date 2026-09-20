@@ -1,0 +1,22 @@
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 15px;
+}
+
+.item,img {
+  width: 320px; 
+  height: 550px;  
+  object-fit: cover; 
+  object-position: top;
+  border-radius: 10px; 
+
+}
+
+.popular-item {
+  display: grid;
+  gap: 30px;
+  justify-items: center;
+}
+ 
