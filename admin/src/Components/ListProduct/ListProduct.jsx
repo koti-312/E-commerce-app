@@ -1,41 +1,58 @@
 import React, { useEffect, useState } from 'react'
 import './ListProduct.css'
-import {FaTrash}  from 'react-icons/fa'
+import { FaTrash } from 'react-icons/fa'
+
 
 const ListProduct = () => {
 
-  const url="https://e-commerce-app-backend-31uv.onrender.com"
-  const[allproducts,setAllProducts]=useState([])
+  const url = "https://e-commerce-app-backend-31uv.onrender.com/api"
+  const [allproducts, setAllProducts] = useState([])
 
-  const fetchInfo= async()=>{
-    await fetch('https://e-commerce-app-backend-31uv.onrender.com/allproducts')
-    .then((res)=>res.json())
-    .then((data)=>{setAllProducts(data)})
+  const fetchInfo = async () => {
+    try {
+      const response = await fetch(`${url}/products/allproducts`)
+      const data = await response.json()
+      setAllProducts(data)
+    }
+    catch (error) {
+      console.log("Error:", error)
+    }
   }
 
-  useEffect(()=>{
-    fetchInfo();
+  useEffect(() => {
+    fetchInfo()
+  }, [])
 
-  },[])
+  const remove_product = async (id) => {
+    try {
+      const response = await fetch(`${url}/products/removeproduct`, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ id: id })
+      })
+      const data = await response.json()
 
-  const remove_product = async(id)=>{
-    await fetch('https://e-commerce-app-backend-31uv.onrender.com/removeproduct',{
-      method:'POST',
-      headers:{
-        Accept:'application/json',
-        'content-Type':'application/json',
-      },
-      body:JSON.stringify({id:id})
-
-    })
-    await fetchInfo()
+      if (data.success) {
+        alert("Product Removed")
+        await fetchInfo()
+      }
+      else {
+        alert("Failed to remove product")
+      }
+    }
+    catch (error) {
+      console.log("Error:", error)
+    }
   }
 
   return (
     <div className='list-product'>
       <h1>All Product List</h1>
       <div className="listproduct-format">
-        <p>Prodcts</p>
+        <p>Products</p>
         <p>Title</p>
         <p>Price</p>
         <p>Category</p>
@@ -44,24 +61,23 @@ const ListProduct = () => {
       </div>
       <div className="list-allproduct">
         <hr />
-
-        {allproducts.map((product,index)=>{
-
-          return <>
-          <div key={index} className="listproduct-format  listproduct">
-            <img src={product.image.startsWith('http') ? product.image : url + product.image} alt="" className="listproduct-icon" />
-            <p>{product.name}</p>
-            <p>${product.price}</p>
-            <p>{product.category}</p>
-            <p>{product.quality}</p>
-           <FaTrash onClick={()=>{remove_product(product.id)}} alt="Delete" className="listproduct-remove"/>
-          </div>
-          <hr />
-          </>
+        {allproducts.map((product, index) => {
+          return (
+            <React.Fragment key={product.id || index}>
+              <div className="listproduct-format listproduct">
+                <img src={product.image?.startsWith('http') ? product.image : url + product.image} alt={product.name} className="listproduct-icon" />
+                <p>{product.name}</p>
+                <p>${product.price}</p>
+                <p>{product.category}</p>
+                <p>{product.quality}</p>
+                <FaTrash onClick={() => remove_product(product.id)} className="listproduct-remove" />
+              </div>
+              <hr />
+            </React.Fragment>
+          )
         })}
       </div>
     </div>
   )
 }
-
 export default ListProduct
