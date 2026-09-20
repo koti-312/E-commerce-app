@@ -133,7 +133,7 @@ const Login = () => {
         </form>
 
         {
-          serverError && <p style={{ color: "red", fontSize: "12px" }}>
+          serverError && <p style={{ color: "red", fontSize: "16px" }}>
             {serverError}
           </p>
         }
@@ -142,9 +142,9 @@ const Login = () => {
           state === "Sign Up" ?
             <p className="login-text">
               Already have an account?
-              <span onClick={() => { setstate("Login") }}>Login here</span>
+              <span onClick={() => { setstate("Login") }}> Login here</span>
             </p> : <p className="login-text">Create an account?
-              <span onClick={() => { setstate("Sign Up") }}>Click here</span></p>}
+              <span onClick={() => { setstate("Sign Up") }}> Click here</span></p>}
 
         <div className="logins-agree">
           <input type="checkbox" />
