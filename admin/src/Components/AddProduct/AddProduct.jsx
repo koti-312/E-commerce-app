@@ -1,58 +1,73 @@
 import React, { useState } from 'react'
-import './AddProduct.css';
+import './AddProduct.css'
 import upload_image from '../../assets/upload.png'
 
 const AddProduct = () => {
 
-    const url="https://e-commerce-app-backend-31uv.onrender.com"
-    const[image,setImage]=useState(null);
-    const[productDetails,setProductDetails]=useState({
-        name:"",
-        image:"",
-        category:"mens",
-        quality:"premium",
-        price:"",
+    const url = "https://e-commerce-app-backend-31uv.onrender.com"
+    const [image, setImage] = useState(null);
+    const [productDetails, setProductDetails] = useState({
+        name: "",
+        image: "",
+        category: "mens",
+        quality: "premium",
+        price: "",
     })
-    const imageHandler=(e)=>{
+    const imageHandler = (e) => {
         setImage(e.target.files[0]);
     }
-    const changeHandler =(e)=>{
-        setProductDetails({...productDetails,[e.target.name]:e.target.value})
+    const changeHandler = (e) => {
+        setProductDetails({ ...productDetails, [e.target.name]: e.target.value })
     }
 
-    const Add_Product = async() =>{
-        console.log(productDetails);
-        let responseData;
-        let product=productDetails;
+    const Add_Product = async () => {
+        console.log(productDetails)
+        let responseData
+        let product = productDetails
 
-        let formData= new FormData();
-        formData.append('product',image);
-        
-        await fetch("https://e-commerce-app-backend-31uv.onrender.com/upload",{
-            method:'POST',
-            headers:{
-                Accept:'application/json',
+        let formData = new FormData()
+        formData.append('product', image)
+
+        await fetch("https://e-commerce-app-backend-31uv.onrender.com/upload", {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
             },
-             body:formData,
+            body: formData,
 
-        }).then((resp)=>resp.json())
-          .then((data)=>{responseData=data});
+        }).then((resp) => resp.json())
+            .then((data) => { responseData = data })
 
-        if(responseData.success)
-            {
-            product.image=responseData.image_url;
-            console.log(product);
-            await fetch('https://e-commerce-app-backend-31uv.onrender.com/addproduct',{
-                method:'POST',
-                headers:{
-                    Accept:'application/json',
-                    'Content-Type':'application/json',
+        if (responseData.success) {
+
+            product.image = responseData.image_url
+            console.log(product)
+            await fetch('https://e-commerce-app-backend-31uv.onrender.com/addproduct', {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
                 },
-                body:JSON.stringify(product),
-            }).then((resp)=>resp.json()).then((data)=>{
-                data.success?alert("Product Added"):alert("Failed")
+                body: JSON.stringify(product),
+            }).then((resp) => resp.json()).then((data) => {
+
+                if (data.success) {
+                    alert("Product Added")
+
+                    setProductDetails({
+                        name: "",
+                        image: "",
+                        category: "mens",
+                        quality: "premium",
+                        price: "",
+                    })
+                    setImage(null)
+                }
+                else {
+                    alert("Failed")
+                }
             })
-        }    
+        }
     }
 
     return (
@@ -61,7 +76,7 @@ const AddProduct = () => {
                 <p>Product Title</p>
                 <input value={productDetails.name} onChange={changeHandler} type="text" name='name' placeholder='type here' />
             </div>
-        <br />
+            <br />
             <div className="addproduct-price">
                 <div className="addproduct-itemfield">
                     <p>Price</p>
@@ -79,17 +94,17 @@ const AddProduct = () => {
                 <br />
                 <div className="addproduct-itemfield">
                     <label htmlFor="file-input">
-                        <img src={image?URL.createObjectURL(image):upload_image} alt="" className='upload-img' />
+                        <img src={image ? URL.createObjectURL(image) : upload_image} alt="" className='upload-img' />
                     </label>
                     <input onChange={imageHandler} type="file" name='image' id='file-input' hidden />
 
                 </div>
                 <br />
                 <br />
-                <button onClick={()=>{Add_Product()}} className='addproduct-bt'>Add</button>
+                <button onClick={() => { Add_Product() }} className='addproduct-bt'>Add</button>
             </div>
         </div>
     )
 }
 
-export default AddProduct; 
+export default AddProduct

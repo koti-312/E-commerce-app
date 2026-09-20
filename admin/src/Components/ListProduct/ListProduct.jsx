@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import './ListProduct.css';
+import React, { useEffect, useState } from 'react'
+import './ListProduct.css'
 import {FaTrash}  from 'react-icons/fa'
 
 const ListProduct = () => {
 
   const url="https://e-commerce-app-backend-31uv.onrender.com"
-  const[allproducts,setAllProducts]=useState([]);
+  const[allproducts,setAllProducts]=useState([])
 
   const fetchInfo= async()=>{
     await fetch('https://e-commerce-app-backend-31uv.onrender.com/allproducts')
     .then((res)=>res.json())
-    .then((data)=>{setAllProducts(data)});
+    .then((data)=>{setAllProducts(data)})
   }
 
   useEffect(()=>{
@@ -28,7 +28,7 @@ const ListProduct = () => {
       body:JSON.stringify({id:id})
 
     })
-    await fetchInfo();
+    await fetchInfo()
   }
 
   return (
@@ -64,4 +64,4 @@ const ListProduct = () => {
   )
 }
 
-export default ListProduct;
+export default ListProduct

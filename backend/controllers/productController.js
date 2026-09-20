@@ -67,16 +67,16 @@ export const popularProducts = async (req, res) => {
 }
 
 export const uploadProduct = async (req, res) => {
+    console.log("req.file:", req.file) 
+
+    if (!req.file) {
+        return res.status(400).json({
+            success: 0,
+            message: "No file uploaded"
+        })
+    }
     res.json({
         success: 1,
         image_url: req.file.path
     })
 }
-
-// export {
-//   addProduct,
-//   removeProduct,
-//   allProducts,
-//   popularProducts,
-//   uploadProduct
-// }

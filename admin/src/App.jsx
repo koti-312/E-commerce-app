@@ -1,6 +1,6 @@
 import React from 'react'
-import Navbar from './Components/Navbar/Navbar';
-import Admin from './Pages/Admin/Admin';
+import Navbar from './Components/Navbar/Navbar'
+import Admin from './Pages/Admin/Admin'
 
   const App = () => {
   return (
@@ -11,4 +11,4 @@ import Admin from './Pages/Admin/Admin';
   )
 }
 
-export default App;
+export default App

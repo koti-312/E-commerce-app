@@ -17,7 +17,6 @@ export const addToCart = async (req, res) => {
             cartData: userData.cartData
         }
     )
-
     res.send("Added")
 }
 
@@ -40,7 +39,6 @@ export const removeFromCart = async (req, res) => {
             cartData: userData.cartData
         }
     )
-
     res.send("Removed")
 }
 
