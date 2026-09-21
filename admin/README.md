@@ -1,12 +1,116 @@
-# React + Vite
+# E-Commerce Website - Admin Panel
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An admin panel built with React.js for managing products in the e-commerce application. Admins can add and remove products and upload product images.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* Admin product management
+* Add new products
+* Remove products
+* Upload product images
+* Cloudinary image integration
+* Product listing
+* Backend API integration
+* Responsive admin interface
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* React.js
+* JavaScript
+* CSS
+* Vite
+* REST API
+* Cloudinary
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/koti-312/E-commerce-app.git
+```
+
+Go to the admin folder:
+
+```bash
+cd E-commerce-app/admin
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+## Environment Variables
+
+Create a `.env` file inside the admin folder:
+
+```env
+VITE_API_URL=http://localhost:4000/api
+```
+
+For the deployed backend:
+
+```env
+VITE_API_URL=https://e-commerce-app-backend-31uv.onrender.com/api
+```
+
+## Run Locally
+
+Start the admin panel:
+
+```bash
+npm run dev
+```
+
+The admin panel will run using the local Vite development URL.
+
+## Project Structure
+
+```text
+admin/
+├── public/
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── assets/
+│   ├── App.jsx
+│   └── main.jsx
+├── .env
+├── package.json
+└── README.md
+```
+
+## Backend
+
+The admin panel communicates with the Node.js and Express.js backend for product management.
+
+Backend API:
+
+https://e-commerce-app-backend-31uv.onrender.com
+
+## Product Management
+
+The admin panel communicates with the following product APIs:
+
+```text
+POST /api/products/addproduct
+POST /api/products/removeproduct
+GET  /api/products/allproducts
+POST /api/products/upload
+```
+
+Product images are uploaded to Cloudinary through the backend.
+
+## Deployment
+
+Admin panel can be deployed separately using Vercel.
+
+Backend is deployed using Render.
+
+## Author
+
+**Koteswar Singh**
+
+GitHub: https://github.com/koti-312
