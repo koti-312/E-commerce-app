@@ -1,13 +1,12 @@
 import Product from "../models/Product.js"
 
 export const addProduct = async (req, res) => {
-    let products = await Product.find({})
+    const products = await Product.find({})
     let id
 
     if (products.length > 0) {
-        let last_product_array = products.slice(-1)
-        let last_product = last_product_array[0]
-        id = last_product.id + 1
+        const lastProduct = products[products.length - 1]
+        id = lastProduct.id + 1
     }
     else {
         id = 1
@@ -21,64 +20,57 @@ export const addProduct = async (req, res) => {
         quality: req.body.quality,
         price: req.body.price
     })
-    console.log(product)
-    await product.save()
-    console.log("Saved")
 
+    const savedProduct = await product.save()
     res.json({
         success: true,
-        name: req.body.name
+        name: savedProduct.name
     })
 }
 
 export const removeProduct = async (req, res) => {
-    await Product.findOneAndDelete({
+
+    const removedProduct = await Product.findOneAndDelete({
         id: req.body.id
     })
-
-    console.log("Removed")
     res.json({
         success: true,
-        name: req.body.name
+        name: removedProduct?.name
     })
 }
 
 export const allProducts = async (req, res) => {
 
-    let products = await Product.find({})
-    console.log("All products fetched")
-    res.send(products)
+    const products = await Product.find({})
+    res.json(products)
 }
 
 export const popularProducts = async (req, res) => {
-    let products = await Product.find({
-        category: {
-            $in: ["mens", "womens"]
-        }
+
+    const products = await Product.find({
+        category: { $in: ["mens", "womens"] }
     })
 
-    let popular = products.slice(0, 8)
-    console.log("Popular Fetched")
-    res.send(popular)
+    const popular = products.slice(0, 8)
+    res.json(popular)
 }
 
 export const uploadProduct = async (req, res) => {
     try {
-        console.log("Upload controller called")
-        console.log("req.file:", req.file)
         if (!req.file) {
             return res.status(400).json({
                 success: false,
                 message: "No file uploaded"
             })
         }
+
+        const imageUrl = req.file.path
         res.status(200).json({
             success: true,
-            image_url: req.file.path
+            image_url: imageUrl
         })
     }
     catch (error) {
-        console.log("Upload error:", error.message)
         res.status(500).json({
             success: false,
             message: error.message
