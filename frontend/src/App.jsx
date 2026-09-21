@@ -10,6 +10,7 @@ import mens_banner from './assets/mens banner.jpg'
 import phones_banner from './assets/phones banners.jpg'
 import  Home from './pages/Home'
 import Footer from './Component/Footer/Footer'
+import PopularProduct from './Component/PopularProduct'
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path="/womens" element={<ShopCategory banner={womens_banner} category="womens" />} />
           <Route path="/gadgets" element={<ShopCategory banner={phones_banner} category="gadgets" />} />
           <Route path="/product/:productId" element={<Product />} />
+          <Route path="/home-product/:productId" element={<PopularProduct />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/login" element={<Login />} />
         </Routes>
