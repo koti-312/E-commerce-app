@@ -5,7 +5,7 @@ import { FaTrash } from 'react-icons/fa'
 
 const ListProduct = () => {
 
-  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:4000/api"
+  const API_URL = import.meta.env.VITE_API_URL
 
   const [allproducts, setAllProducts] = useState([])
 
@@ -50,6 +50,7 @@ const ListProduct = () => {
   }
 
   return (
+
     <div className='list-product'>
       <h1>All Product List</h1>
       <div className="listproduct-format">
@@ -64,9 +65,10 @@ const ListProduct = () => {
         <hr />
         {allproducts.map((product, index) => {
           return (
+
             <React.Fragment key={product.id || index}>
               <div className="listproduct-format listproduct">
-                <img src={product.image?.startsWith('http') ? product.image : url + product.image} alt={product.name} className="listproduct-icon" />
+                <img src={product.image} alt={product.name} className="listproduct-icon" />
                 <p>{product.name}</p>
                 <p>${product.price}</p>
                 <p>{product.category}</p>
