@@ -1,44 +1,85 @@
 import Users from "../models/User.js"
 
 export const addToCart = async (req, res) => {
-    console.log("Added", req.body.itemId)
+    
+  try {
+    const { itemId } = req.body
+    const userData = await Users.findById(req.user.id)
 
-    let userData = await Users.findOne({
-        _id: req.user.id
-    })
+    if (!userData) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found"
+      })
+    }
 
-    userData.cartData[req.body.itemId] += 1
+    if (!userData.cartData) {
+      userData.cartData = {}
+    }
 
-    await Users.findOneAndUpdate(
-        {
-            _id: req.user.id
-        },
-        {
-            cartData: userData.cartData
-        }
+    userData.cartData[itemId] = (userData.cartData[itemId] || 0) + 1
+
+    const updatedUser = await Users.findByIdAndUpdate(
+      req.user.id,
+      {
+        cartData: userData.cartData
+      },
+      { new: true }
     )
-    res.send("Added")
+
+    res.json({
+      success: true,
+      message: "Added to cart",
+      cartData: updatedUser.cartData
+    })
+  }
+  catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Failed to add product to cart"
+    })
+  }
 }
 
 export const removeFromCart = async (req, res) => {
-    console.log("removed", req.body.itemId)
 
-    let userData = await Users.findOne({
-        _id: req.user.id
-    })
+  try {
+    const { itemId } = req.body
+    const userData = await Users.findById(req.user.id)
 
-    if (userData.cartData[req.body.itemId] > 0) {
-        userData.cartData[req.body.itemId] -= 1
+    if (!userData) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found"
+      })
     }
 
-    await Users.findOneAndUpdate(
-        {
-            _id: req.user.id
-        },
-        {
-            cartData: userData.cartData
-        }
-    )
-    res.send("Removed")
-}
+    if (!userData.cartData) {
+      userData.cartData = {}
+    }
 
+    if (userData.cartData[itemId] > 0) {
+      userData.cartData[itemId] -= 1
+    }
+
+    const updatedUser = await Users.findByIdAndUpdate(
+      req.user.id,
+      {
+        cartData: userData.cartData
+      },
+      { new: true }
+    )
+
+    res.json({
+      success: true,
+      message: "Removed from cart",
+      cartData: updatedUser.cartData
+    })
+  }
+  catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Failed to remove product from cart"
+    })
+  }
+}
