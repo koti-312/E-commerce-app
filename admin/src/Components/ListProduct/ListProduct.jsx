@@ -5,12 +5,13 @@ import { FaTrash } from 'react-icons/fa'
 
 const ListProduct = () => {
 
-  const url = "https://e-commerce-app-backend-31uv.onrender.com/api"
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:4000/api"
+
   const [allproducts, setAllProducts] = useState([])
 
   const fetchInfo = async () => {
     try {
-      const response = await fetch(`${url}/products/allproducts`)
+      const response = await fetch(`${API_URL}/products/allproducts`)
       const data = await response.json()
       setAllProducts(data)
     }
@@ -25,7 +26,7 @@ const ListProduct = () => {
 
   const remove_product = async (id) => {
     try {
-      const response = await fetch(`${url}/products/removeproduct`, {
+      const response = await fetch(`${API_URL}/products/removeproduct`, {
         method: 'POST',
         headers: {
           Accept: 'application/json',
