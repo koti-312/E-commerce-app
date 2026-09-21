@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import './Popular.css'
 import Item from '../Item/Item'
 import home_product from '../../assets/product_home'
@@ -16,6 +16,7 @@ const Popular = () => {
             name={item.name}
             image={item.image}
             price={item.price}
+            homeProduct={true}
           />
         ))}
       </div>
@@ -24,3 +25,11 @@ const Popular = () => {
 }
 
 export default Popular
+
+
+
+
+
+
+
+
