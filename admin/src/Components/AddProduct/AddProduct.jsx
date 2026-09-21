@@ -4,8 +4,9 @@ import upload_image from '../../assets/upload.png'
 
 const AddProduct = () => {
 
-    const url = "https://e-commerce-app-backend-31uv.onrender.com/api"
-    const [image, setImage] = useState(null)
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:4000/api"
+
+  const [image, setImage] = useState(null)
     const [productDetails, setProductDetails] = useState({
         name: "",
         image: "",
@@ -30,7 +31,7 @@ const AddProduct = () => {
             const formData = new FormData()
             formData.append('product', image)
 
-            const uploadResponse = await fetch(`${url}/products/upload`, {
+            const uploadResponse = await fetch(`${API_URL}/products/upload`, {
                 method: 'POST',
                 headers: {
                     Accept: 'application/json'
@@ -42,7 +43,7 @@ const AddProduct = () => {
                 const product = {...productDetails,image: responseData.image_url}
                 console.log(product)
 
-                const addProductResponse = await fetch(`${url}/products/addproduct`, {
+                const addProductResponse = await fetch(`${API_URL}/products/addproduct`, {
                     method: 'POST',
                     headers: {
                         Accept: 'application/json',
