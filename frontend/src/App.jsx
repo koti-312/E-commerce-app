@@ -8,12 +8,35 @@ import ShopCategory from './pages/ShopCategory'
 import womens_banner from './assets/womens banner.jpg'
 import mens_banner from './assets/mens banner.jpg'
 import phones_banner from './assets/phones banners.jpg'
-import  Home from './pages/Home'
+import Home from './pages/Home'
 import Footer from './Component/Footer/Footer'
 import PopularProduct from './Component/PopularProduct'
+import { useEffect, useState } from 'react'
+import "./App.css"
+import shop_website from "./assets/shop_website.png"
 
 
 function App() {
+
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false)
+    }, 4000)
+    return () => clearTimeout(timer)
+  }, [])
+
+  if (loading) {
+    return (
+      <div className='website-name'>
+        <img src={shop_website} alt="TrendKart" />
+        <h1>TrendKart</h1>
+      </div>
+
+    )
+  }
+
   return (
     <div>
       <BrowserRouter>
@@ -28,8 +51,8 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/login" element={<Login />} />
         </Routes>
-        <Footer/>
-      
+        <Footer />
+
       </BrowserRouter>
     </div>
   )
