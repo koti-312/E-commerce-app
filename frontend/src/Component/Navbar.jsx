@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import './Navbar.css'
 import { Link } from 'react-router-dom'
-import shop_logo from '../assets/shop logo.jpeg'
+import shop_logo from '../assets/shop_logo.jpeg'
 import cart_icon from '../assets/cart.png'
 import { ShopContext } from './Context/ShopContext'
 
