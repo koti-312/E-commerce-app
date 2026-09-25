@@ -64,7 +64,7 @@ export const login = async (req, res) => {
 
         const checkUser = await Users.findOne({ email })
 
-        if (!-checkUser) {
+        if (!checkUser) {
             res.status(400).json({
                 success: false,
                 message: "Wrond email Id"
