@@ -9,7 +9,7 @@ const getAuthHeaders = () => ({
 export const loginUser = async (formData) => {
 
   const response = await fetch(`${API_URL}/users/login`, {
-    method: 'POST',
+    method: "POST",
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(formData)
   })
@@ -21,7 +21,7 @@ export const loginUser = async (formData) => {
 export const signupUser = async (formData) => {
 
   const response = await fetch(`${API_URL}/users/signup`, {
-    method: 'POST',
+    method: "POST",
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(formData)
   })
@@ -33,7 +33,7 @@ export const signupUser = async (formData) => {
 export const addToCart = async (itemId) => {
     
   const response = await fetch(`${API_URL}/cart/addtocart`, {
-    method: 'POST',
+    method: "POST",
     headers: getAuthHeaders(),
     body: JSON.stringify({ itemId })
   })
@@ -45,12 +45,21 @@ export const addToCart = async (itemId) => {
 export const removeFromCart = async (itemId) => {
 
   const response = await fetch(`${API_URL}/cart/removefromcart`, {
-    method: 'POST',
+    method: "POST",
     headers: getAuthHeaders(),
     body: JSON.stringify({ "itemId": itemId })
   })
 
   const data = await response.json()
+  return data
+}
+
+export const getCart=async()=>{
+  const response=await fetch(`${API_URL}/cart/getcart`,{
+    method:"GET",
+    headers:getAuthHeaders()
+  })
+  const data=await response.json()
   return data
 }
 
