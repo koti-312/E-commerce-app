@@ -1,6 +1,8 @@
 .productdisplay {
   display: flex;
   margin: 0px 170px;
+  gap: 60px;
+  padding: 40px;
 }
 
 .productdisplay-left {
@@ -15,23 +17,37 @@
 }
 
 .productdisplay-img-list img {
-  height: 180px;
+  height: 170px;
+  width: 170px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
 .productdisplay-main-img {
-  width: 586px;
-  height: 830px;
+  width: 550px;
+  height: 800px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 8px;
 }
 
 .productdisplay-right {
-  margin: 0px 70px;
+  margin: 40px;
   display: flex;
   flex-direction: column;
 }
 
 .prod-name {
-  color: #1a1a1a;
+  color: #2e2c2c;
+}
 
+.gadget-features li {
+  padding: 6px 0;
+  font-size: 24px;
+  color: #333;
+  list-style: none;
 }
 
 .productdisplay-right-prices {
@@ -40,23 +56,25 @@
 }
 
 .productdisplay-right-description {
-
-  color: black;
-  font-size: 20px;
+  color: rgb(95, 94, 94);
+  font-size: 24px;
   font-weight: 450;
 }
 
-.cart {
+
+
+.cart-btn {
+  margin-top: 20px;
   height: 50px;
   width: 170px;
-  font-size: 20px;
-  background-color: bisque;
-  color: black;
+  font-size: 18px;
+  background-color: rgb(221, 6, 78);
+  color: white;
   border: none;
   cursor: pointer;
 }
 
-.cart:hover {
+.cart-btn:hover {
   background-color: red;
   color: white;
 }
@@ -69,4 +87,54 @@
 
 .product-display span {
   font-size: 26px;
+}
+
+.selector-label {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-top: 10px;
+}
+
+.size-options {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.size-btn {
+  width: 45px;
+  height: 45px;
+  border: 1px solid #ccc;
+  background-color: white;
+  cursor: pointer;
+  font-size: 19px;
+  border-radius: 20px;
+  transition: all 0.2s ease;
+}
+
+.size-btn:hover {
+  border-color: #e6394e;
+}
+
+.size-btn.active {
+  background-color: #e6394e;
+  color: white;
+  border-color: #e6394e;
+}
+
+.dress-sizeError{
+  color: rgb(219, 11, 11);
+  font-size: 20px;
+}
+
+.gadgets-descryption{
+  color: #5a5656;
+  font-size: 24px;
+
+}
+.stock-item{
+  color: rgb(11, 184, 11);
+  font-size: 21px;
+  font-weight: 700;
 }
