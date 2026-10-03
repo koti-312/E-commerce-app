@@ -1,27 +1,72 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+body{
+  background-color: #fafafa;
+}
 
-.website-name{
+html{
+  scroll-behavior: smooth;
+}
+
+.website-name {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgb(7, 2, 2);
-  color: white;
   height: 100vh;
-  font-weight: bold;
-}
-.website-name {
-  opacity: 1;
-  animation: fade 3s ease backwards;
+  background-color: #000000;
+  font-weight: 700;
+  animation: fade 3s ease forwards;
 }
 
-.website-name img{
-  height: 100px;
-  width: 100px;
+.website-name img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  margin-top: 30px;
+  margin-right: -18px;
 }
 
+.website-name span{
+  font-size: 30px;
+}
 
-@keyframes fade{
-  0%{opacity: 0;}
-  50%{opacity: 1;}
+.trend {
+  color: #ffffff;
+}
 
+.kart {
+  color: #e6394e;
+}
+
+:root {
+  --toastify-toast-min-height: 90px;
+}
+
+.Toastify__toast-container {
+  top: 120px !important;      
+  right: 20px !important;  
+}
+
+.Toastify__toast {
+  font-size: 20px !important;      
+  padding: 20px !important;   
+  min-height: 90px !important;
+  border-radius: 10px !important;
+  background-color: rgb(21, 179, 21) !important;
+  color: white !important;
+}
+
+.Toastify__toast-icon svg {
+  fill: white !important;
+  width: 30px !important;       
+  height: 30px !important;
+}
+
+@keyframes fade {
+  0% {opacity: 0;}
+100% {opacity: 1;}
 }
