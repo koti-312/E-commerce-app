@@ -1,157 +1,80 @@
-import React, { useState } from 'react'
-import './Login.css'
-import { useNavigate } from 'react-router-dom'
-import { loginUser, signupUser } from '../services/api'
+import React, { useState } from "react"
+import { useNavigate, Link } from "react-router-dom"
+import "./Login.css"
+import { loginUser } from "../services/api"
 
 const Login = () => {
 
-  const [state, setstate] = useState("Login")
-  const [error, setError] = useState({})
-  const [formData, setFormData] = useState({
-    username: "",
-    password: "",
-    email: ""
-  })
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [serverError, setServerError] = useState("")
 
   const navigate = useNavigate()
 
-  const validateform = () => {
-    let newError = {}
-
-    if (state === "Sign Up" && !formData.username) {
-      newError.username = "Name is required!"
-    }
-    if (!formData.email) {
-      newError.email = "Email is required"
-    }
-    else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newError.email = "Enter valid email!"
-    }
-    if (!formData.password) {
-      newError.password = "Password is required!"
-    }
-    else if (formData.password.length < 6) {
-      newError.password = "Password must be at least 6 characters!"
-    }
-    setError(newError)
-    return Object.keys(newError).length === 0
-  }
-
-
   const handleSubmit = async (e) => {
     e.preventDefault()
-    if (!validateform())
-      return
-    if (state === "Login") {
-      await login()
-    } else {
-      await signup()
-    }
 
-    setFormData({
-      username: "",
-      email: "",
-      password: ""
-    })
-    setError({})
-  }
-
-  const changeHandler = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
-  }
-
-  const [serverError, setServerError] = useState("")
-
-  const login = async () => {
-    
     try {
-      const data = await loginUser(formData)
+      const data = await loginUser({ email, password })
       if (data.success) {
-        localStorage.setItem('auth-token', data.token)
-        navigate("/")
-      } else {
-        setServerError(data.errors)
-      }
-    }
-    catch (err) {
-      setServerError("Something went wrong. Please try again.")
-    }
-  }
+        setEmail("")
+        setPassword("")
 
-  const signup = async () => {
-    try {
-      const data = await signupUser(formData)
-      if (data.success) {
-        localStorage.setItem('auth-token', data.token)
+        localStorage.setItem("auth-token", data.token)
         navigate("/")
       }
       else {
         setServerError(data.errors)
       }
     }
-    catch (err) {
-      setServerError("Something went wrong. Please try again.")
+    catch (error) {
+      setServerError("Something went wrong. Please try again")
     }
   }
 
   return (
-
-    <div className="logins" >
+    <main className="logins">
       <div className="logins-container">
-        <h1>{state}</h1>
+        <h1>Welcome Back 👋</h1>
 
         <form className="logins-fields" onSubmit={handleSubmit}>
-
-          {state === "Sign Up" ?
-            <>
-              <input name='username'
-                value={formData.username}
-                type="text"
-                placeholder="Your Name"
-                onChange={changeHandler} />
-              {error.username && <span className='inputError-msg'>{error.username}</span>}
-            </>
-            : <></>
-          }
-
-          <input name='email'
-            value={formData.email}
+          <input
+            name="email"
             type="email"
             placeholder="Email Address"
-            onChange={changeHandler} />
-          {error.email && <span className='inputError-msg'>{error.email}</span>}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            autoComplete="email"
+            required />
 
-          <input name='password'
-            value={formData.password}
+          <input
+            name="password"
             type="password"
             placeholder="Password"
-            onChange={changeHandler} />
-          {error.password && <span className='inputError-msg'>{error.password}</span>}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            autoComplete="current-password"
+            required />
 
-          <button>Continue</button>
-
+          <button type="submit">Login</button>
         </form>
 
-        {
-          serverError && <p style={{ color: "red", fontSize: "16px" }}>
-            {serverError}
-          </p>
-        }
+        {serverError && (
+          <p className="server-error"> {serverError}</p>
+        )}
 
-        {
-          state === "Sign Up" ?
-            <p className="login-text">
-              Already have an account?
-              <span onClick={() => { setstate("Login") }}> Login here</span>
-            </p> : <p className="login-text">Create an account?
-              <span onClick={() => { setstate("Sign Up") }}> Click here</span></p>}
+        <p className="login-text">Don't have an account?
+          <Link to="/register"> Register</Link>
+        </p>
 
         <div className="logins-agree">
-          <input type="checkbox" />
-          <p className='box'>By continuing, you agree to our terms of service & privacy policy</p>
+          <input type="checkbox" required />
+          <p className="box">
+            By continuing, you agree to our terms of service & privacy policy.
+          </p>
         </div>
       </div>
-    </div >
+    </main>
   )
 }
 
