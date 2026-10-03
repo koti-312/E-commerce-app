@@ -3,12 +3,11 @@
   justify-content: space-between;
   align-items: center;
   padding: 12px 40px;
-  background-color: white;
-  box-shadow: 0 2px 4px rgba(0,0,0.05);
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgb(241, 239, 239);
   position: sticky;
   top: 0;
   z-index: 1000;
-  margin-top: 10px;
 }
 
 .nav-logo {
@@ -17,10 +16,9 @@
 }
 
 .nav-logo img {
-  height: 100px;
-  width: 100px;
+  height: 165px;
+  width:auto;
   object-fit: contain;
-  
 }
 
 .trend{
@@ -96,6 +94,7 @@
 
 .nav-login-cart button:hover {
   background: grey;
+  color: white;
 }
 
 .nav-cart-wrapper {
@@ -123,4 +122,3 @@
   background: red;
   color: white;
 }
-
