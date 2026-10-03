@@ -1,11 +1,28 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import './ProductDisplay.css'
 import { ShopContext } from '../Context/ShopContext'
+import { toast } from 'react-toastify'
 
 const ProductDisplay = (props) => {
-
     const { product } = props
     const { addtoCart } = useContext(ShopContext)
+
+    const [selectedSize, setSelectedSize] = useState(null)
+    const [sizeError, setSizeError] = useState("")
+
+    const sizes = ["S", "L", "M", "XL","XXL"]
+    const cartDress = product.category === "mens" || product.category === "womens"
+    const Gadgets = product.category === "gadgets"
+
+    const handleAddtocart = () => {
+        if (cartDress && !selectedSize) {
+            setSizeError("Please select a size")
+            return
+        }
+        setSizeError("")
+        addtoCart(product.id)
+        toast.success(`${product.name} added to cart!`)
+    }
 
     return (
         <div className='productdisplay'>
@@ -16,26 +33,60 @@ const ProductDisplay = (props) => {
                     <img src={product.image} alt="" />
                     <img src={product.image} alt="" />
                 </div>
-
                 <div className="productdisplay-img">
                     <img src={product.image} alt="" className="productdisplay-main-img" />
                 </div>
 
-                <div className="product-details">
-
+                <main className="productdisplay-right">
                     <div className='product-display'>
-                        <h1 className="prod-name">{product.name} </h1>
-                        <span>{product.quality}</span>
-                        <span>p(144)</span>
-                        <span className="productdisplay-right-prices">${product.price}</span>
-                        <p className='productdisplay-right-description'>A lightweight cotton dress with soft pastel floral prints. Designed for comfort during warm days, it features a flowing silhouette and breathable fabric. Perfect for beach outings, picnics, or casual evening wear.</p>
-                        <button onClick={() => { addtoCart(product.id) }} className='cart'> Add to cart</button>
-                        
+                        <h1 className="prod-name">{product.name}</h1>
+
+                        <ul className="gadget-features">
+                            <li>📦 Free Shipping</li>
+                            <li>🔄 7-Day Easy Returns</li>
+                            <li>🛡️ 1 Year Warranty</li>
+                        </ul>
+
+                        <span className="productdisplay-right-prices">Price: ${product.price}</span>
+
+                        {cartDress && (
+                            <p className='productdisplay-right-description'>
+                                {product.description}
+                            </p>
+                        )}
+
+                        {Gadgets && (
+                            <p className='gadgets-descryption'>
+                                {product.description}
+                            </p>
+                        )}
+                        {cartDress && (
+                            <div className="size-selector">
+                                {sizeError && (<p className='dress-sizeError'>{sizeError}</p>)}
+                                <p className="selector-label">Select Size:</p>
+                                <div className="size-options">
+                                    {sizes.map((size) => (
+                                        <button type="button" key={size}
+                                            className={`size-btn ${selectedSize === size ? "active" : ""}`}
+                                            onClick={() => {setSelectedSize(size)
+                                                setSizeError("")
+                                            }}>
+                                            {size}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
+                        {Gadgets && (
+                            <p className='stock-item'>✓ In Stock</p>
+                        )}
+
+                        <button onClick={handleAddtocart} className='cart-btn'>ADD TO CART</button>
                     </div>
-                </div>
+                </main>
             </div>
         </div>
-
     )
 }
 
