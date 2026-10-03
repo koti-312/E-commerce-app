@@ -7,7 +7,6 @@ export const signup = async (req, res) => {
 
     try {
         const { username, email, password } = req.body
-
         const checkUser = await Users.findOne({ email })
         if (checkUser) {
             return res.status(400).json({
@@ -17,7 +16,6 @@ export const signup = async (req, res) => {
         }
 
         const hashedpassword = await bcrypt.hash(password, 10)
-
         const cart = {}
         for (let i = 0; i < 300; i++) {
             cart[i] = 0
@@ -30,19 +28,14 @@ export const signup = async (req, res) => {
             cartData: cart
         })
         const saveUser = await userdata.save()
-
         const data = {
-            user: {
-                id: saveUser.id
-            }
+            user: { id: saveUser.id }
         }
 
-        const token = jwt.sign(
-            data,
+        const token = jwt.sign(data,
             process.env.JWT_SECRET,
             { expiresIn: "7d" }
         )
-
         res.status(201).json({
             success: true,
             token
@@ -61,7 +54,6 @@ export const login = async (req, res) => {
 
     try {
         const { email, password } = req.body
-
         const checkUser = await Users.findOne({ email })
 
         if (!checkUser) {
@@ -78,18 +70,14 @@ export const login = async (req, res) => {
                 message: "Invaild password"
             })
         }
-
         const data = {
-            user: {
-                id: checkUser.id
-            }
+            user: { id: checkUser.id }
         }
 
         const token = jwt.sign(
             data, process.env.JWT_SECRET,
             { expiresIn: "7d" }
         )
-
         res.status(200).json({
             success: true,
             token
