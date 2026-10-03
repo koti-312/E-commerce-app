@@ -1,6 +1,6 @@
 .shopcategory-banner{
   width: 100%;
-  height: 490px; 
+  height: 600px; 
   margin: 20px 0;
   overflow: hidden;
   position: relative;
@@ -26,5 +26,4 @@
     margin: 20px 170px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    row-gap: 150PX;
 }
