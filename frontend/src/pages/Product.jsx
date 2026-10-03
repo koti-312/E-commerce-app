@@ -1,8 +1,9 @@
 import React, { useContext } from 'react'
 import { ShopContext } from '../Component/Context/ShopContext'
 import { useParams } from 'react-router-dom'
-import Breadcrum from '../Component/Breadcrums/Breadcrum'
 import ProductDisplay from '../Component/ProductDisplay/ProductDisplay'
+import Navbar from '../Component/Navbar'
+import Footer from '../Component/Footer/Footer'
 
 const Product = () => {
 
@@ -10,14 +11,12 @@ const Product = () => {
   const {productId} =useParams()
   const product =all_product.find((e)=> e.id === Number(productId))
 
-
   return (
-    <div>
-
-      <Breadcrum product={product}/>
+    <>
+      <Navbar/>
       <ProductDisplay product={product}/>
-    
-    </div>
+      <Footer/>
+    </>
   )
 }
 
