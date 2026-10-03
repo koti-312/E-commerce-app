@@ -1,11 +1,11 @@
 import React, { createContext, useEffect, useState } from "react"
-import all_product from "../../assets/product_home"
-import home_product from "../../assets/all_product"
+import all_product from '../../assets/all_product'
+import home_product from '../../assets/product_home'
 import { addToCart as addToCartAPI, removeFromCart as removeFromCartAPI, getCart } from '../../services/api'
 
 export const ShopContext = createContext(null)
 
-const combined_products = [...all_product, ...home_product]
+const combined_products_for_cart = [...all_product, ...home_product]
 
 const getDefaultCart = () => {
   let cart = {}
@@ -23,8 +23,8 @@ const ShopContextProvider = (props) => {
       if (localStorage.getItem('auth-token')) {
         try {
           const data = await getCart()
-          console.log("GET CART RESPONSE:", data)
-
+          console.log("Get cart response:", data)
+          
           if (data.success) {
             setCartItems((prev) => ({ ...prev, ...data.cartData }))
           }
@@ -52,6 +52,7 @@ const ShopContextProvider = (props) => {
   }
 
   const removeFromCart = async (itemId) => {
+
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }))
     if (localStorage.getItem('auth-token')) {
       try {
@@ -75,7 +76,6 @@ const ShopContextProvider = (props) => {
       }
       return updatedCart
     })
-
   }
 
   const getTotalCartAmount = () => {
@@ -83,7 +83,8 @@ const ShopContextProvider = (props) => {
     let totalAmount = 0
     for (const item in cartItems) {
       if (cartItems[item] > 0) {
-        const itemInfo = combined_products.find((product) => Number(product.id) === Number(item))
+        const itemInfo = combined_products_for_cart.find(
+          (product) => Number(product.id) === Number(item))
         if (itemInfo) {
           totalAmount += Number(itemInfo.price) * cartItems[item]
         }
@@ -93,7 +94,6 @@ const ShopContextProvider = (props) => {
   }
 
   const getTotalCartItems = () => {
-
     let totalItem = 0
     for (const item in cartItems) {
       if (cartItems[item] > 0) {
@@ -103,7 +103,11 @@ const ShopContextProvider = (props) => {
     return totalItem
   }
 
-  const contextValue = {getTotalCartItems,getTotalCartAmount,all_product: combined_products,cartItems,
+  const getProductById = (id) => {
+    return combined_products_for_cart.find((product) => Number(product.id) === Number(id))
+  }
+
+  const contextValue = {getTotalCartItems,getTotalCartAmount,all_product,getProductById,cartItems,
     addtoCart,removeFromCart,removeFromOneCart
   }
 
