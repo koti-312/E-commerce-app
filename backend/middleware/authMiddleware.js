@@ -1,24 +1,26 @@
 import jwt from "jsonwebtoken"
 
-const fetchUser = async (req, res, next) => {
+const authMiddleware = async (req, res, next) => {
 
     const token = req.header("auth-token")
     if (!token) {
         return res.status(401).json({
-            errors: "Please authenticate using valid token"
+            success:false,
+            message: "Please authenticate using valid token"
         })
     }
 
     try {
-        const data = jwt.verify(token, "secret_ecom")
+        const data = jwt.verify(token, process.env.JWT_SECRET)
         req.user = data.user
         next()
     }
     catch (error) {
         return res.status(401).json({
-            errors: "Please authenticate using valid token"
+            success:false,
+            message: "Please authenticate using valid token"
         })
     }
 }
 
-export default fetchUser
+export default authMiddleware
