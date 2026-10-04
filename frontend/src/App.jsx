@@ -15,7 +15,7 @@ import logo from "./assets/website_logo.png"
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import PageNotFound from './Component/PageNotFound/PageNotFound'
-import ScrollToTop from './Component/ScrollToTop'
+import ScrollToTop from "./Component/ScrollToTop"
 
 function App() {
   
