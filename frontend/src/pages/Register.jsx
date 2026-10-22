@@ -23,7 +23,7 @@ const Register = () => {
                 setPassword("")
 
                 localStorage.setItem("auth-token", data.token)
-                navigate("/")
+                navigate("/login")
             }
             else {
                 setServerError(data.errors)
