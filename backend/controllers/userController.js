@@ -36,14 +36,14 @@ export const signup = async (req, res) => {
             process.env.JWT_SECRET,
             { expiresIn: "7d" }
         )
-        res.status(201).json({
+        return res.status(201).json({
             success: true,
             token
         })
     }
     catch (error) {
         console.log("Error:", error.message)
-        res.status(500).json({
+        return res.status(500).json({
             success: false,
             message: "Something went wrong"
         })
@@ -57,7 +57,7 @@ export const login = async (req, res) => {
         const checkUser = await Users.findOne({ email })
 
         if (!checkUser) {
-            res.status(400).json({
+            return res.status(400).json({
                 success: false,
                 message: "Wrond email Id"
             })
@@ -65,7 +65,7 @@ export const login = async (req, res) => {
 
         const comparePassword = await bcrypt.compare(password, checkUser.password)
         if (!comparePassword) {
-            res.status(400).json({
+            return res.status(400).json({
                 success: false,
                 message: "Invaild password"
             })
@@ -78,14 +78,14 @@ export const login = async (req, res) => {
             data, process.env.JWT_SECRET,
             { expiresIn: "7d" }
         )
-        res.status(200).json({
+        return res.status(200).json({
             success: true,
             token
         })
     }
     catch (error) {
         console.log("Error:", error.message)
-        res.status(500).json({
+        return res.status(500).json({
             success: false,
             message: "Something went wrong"
         })
